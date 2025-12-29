@@ -28,7 +28,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker_hub-ssh', 
+                withCredentials([usernamePassword(credentialsId: 'docker_hub-cred', 
                                                  usernameVariable: 'DOCKER_USER', 
                                                  passwordVariable: 'DOCKER_PASS')]) {
                     sh """
@@ -44,7 +44,7 @@ pipeline {
                 DOCKER_HOST = "unix:///var/run/docker.sock"
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker_hub-ssh',
+                withCredentials([usernamePassword(credentialsId: 'docker_hub-cred',
                                                  usernameVariable: 'DOCKER_USER',
                                                  passwordVariable: 'DOCKER_PASS')]) {
                     sh """
